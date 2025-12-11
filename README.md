@@ -25,6 +25,3 @@ A responsive personal finance tracker built using JavaScript, Chart.js, and Loca
 - **Local Storage API**
 
 ---
-
-## 📂 Project Structure
-
