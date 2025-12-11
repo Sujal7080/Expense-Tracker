@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💰 Expense Tracker</h1>
+            <p>Track your spending and stay within budget</p>
+        </header>
+
+        <div class="dashboard">
+            <div class="summary-cards">
+                <div class="card income">
+                    <h3>Total Income</h3>
+                    <p id="totalIncome">$0.00</p>
+                </div>
+                <div class="card expense">
+                    <h3>Total Expenses</h3>
+                    <p id="totalExpenses">$0.00</p>
+                </div>
+                <div class="card balance">
+                    <h3>Balance</h3>
+                    <p id="balance">$0.00</p>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="left-panel">
+                    <div class="add-transaction">
+                        <h3>Add Transaction</h3>
+                        <form id="transactionForm">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" id="description" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="amount">Amount</label>
+                                <input type="number" id="amount" step="0.01" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select id="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="food">🍔 Food</option>
+                                    <option value="transport">🚗 Transport</option>
+                                    <option value="entertainment">🎬 Entertainment</option>
+                                    <option value="shopping">🛍️ Shopping</option>
+                                    <option value="bills">💡 Bills</option>
+                                    <option value="health">🏥 Health</option>
+                                    <option value="education">📚 Education</option>
+                                    <option value="salary">💼 Salary</option>
+                                    <option value="freelance">💻 Freelance</option>
+                                    <option value="other">📦 Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="type">Type</label>
+                                <select id="type" required>
+                                    <option value="expense">Expense</option>
+                                    <option value="income">Income</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" required>
+                            </div>
+                            
+                            <button type="submit">Add Transaction</button>
+                        </form>
+                    </div>
+
+                    <div class="budget-section">
+                        <h3>Monthly Budget</h3>
+                        <div class="budget-input">
+                            <input type="number" id="budgetAmount" placeholder="Set monthly budget" step="0.01">
+                            <button id="setBudget">Set Budget</button>
+                        </div>
+                        <div class="budget-progress">
+                            <div class="progress-bar">
+                                <div id="progressFill" class="progress-fill"></div>
+                            </div>
+                            <p id="budgetStatus">No budget set</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-panel">
+                    <div class="chart-section">
+                        <h3>Expense Categories</h3>
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-section">
+                        <h3>Monthly Trend</h3>
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transactions-section">
+                <div class="transactions-header">
+                    <h3>Recent Transactions</h3>
+                    <div class="filters">
+                        <select id="filterType">
+                            <option value="all">All Transactions</option>
+                            <option value="income">Income Only</option>
+                            <option value="expense">Expenses Only</option>
+                        </select>
+                        <select id="filterCategory">
+                            <option value="all">All Categories</option>
+                        </select>
+                        <button id="clearAll">Clear All</button>
+                    </div>
+                </div>
+                <div id="transactionsList" class="transactions-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
